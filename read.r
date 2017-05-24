@@ -1,10 +1,27 @@
-# funcion para leer los csv de eventos de windows
-leer <- function(x) { r <- read.csv(x, stringsAsFactors=FALSE, row.names = NULL); return(r); }
+library("lubridate")
+setClass("DateTime")
+setAs("character", "DateTime", function(from) lubridate::dmy_hms(from))
 
-seguridad <- leer("Seguridad.csv")
-sistemas <- leer("Sistema.csv")
-instalacion <- leer("Instalacion.csv")
-aplicacion <- leer("Aplicacion.csv")
+#' Read windows events csv
+#'
+#' This is a wrapper around read.csv
+#'
+#' @param file csv file to read
+#' @return Dataframe with the csv parsed
+#'
+leerwincsv <- function(file) {
+  r <- read.csv(file, stringsAsFactors=FALSE
+                , col.names = c("Level","Date","Origin","Id","Category","Description")
+                , skip = 1
+                , header = F
+                , colClasses = c("factor", "DateTime", "factor", "integer", "factor", "character"));
+  return(r);
+}
+
+seguridad <- leerwincsv("Seguridad.csv")
+sistemas <- leerwincsv("Sistema.csv")
+instalacion <- leerwincsv("Instalacion.csv")
+aplicacion <- leerwincsv("Aplicacion.csv")
 
 
 print("plot sizes.png")

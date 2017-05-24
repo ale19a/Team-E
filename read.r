@@ -30,14 +30,14 @@ barplot(c(nrow(seguridad), nrow(sistemas), nrow(instalacion), nrow(aplicacion)),
 dev.off()
 
 library("dplyr")
-# funcion para vagos
+# funcion para hacer los plots
 id_barplot <- function(df) {
-  df.count <- count(df, Id..del.evento)
+  df.count <- count(df, Id) # contar la cantidad de eventos por Id
   ylim <- c(0, 1.1*max(df.count$n))
-  x <- df.count[order(df.count$n, decreasing=T),]
+  x <- df.count[order(df.count$n, decreasing=T),] # df.count ordenado
   xx <- barplot(x$n, main="LOL", ylab="Cantidad", ylim = ylim, cex.axis = 1.2)
   text(x = xx, y = x$n, label = x$n, pos = 3, cex = 1.0, col = "red")
-  axis(1, at = xx, labels = x$Id..del.evento, tick = F, las = 2, line = -0,5, cex.axis=1.2)
+  axis(1, at = xx, labels = x$Id, tick = F, las = 2, line = -0,5, cex.axis=1.2)
 }
 
 png(filename="aplicacion.id.png", width=1980, height = 1080)

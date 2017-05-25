@@ -40,15 +40,10 @@ id_barplot <- function(df) {
   axis(1, at = xx, labels = x$Id, tick = F, las = 2, line = -0,5, cex.axis=1.2)
 }
 
-png(filename="aplicacion.id.png", width=1980, height = 1080)
-id_barplot(aplicacion)
-dev.off()
-png(filename="sistema.id.png")
-id_barplot(sistemas)
-dev.off()
-png(filename="instalacion.id.png")
-id_barplot(instalacion)
-dev.off()
-png(filename="seguridad.id.png", width=1024, height = 768)
+png(filename="id.count.png", width=1920, 1080)
+par(mfrow=c(2,2))
+id_barplot(sistemas) # FIXME: Demasiados id
+id_barplot(instalacion) # FIXME: los id los pone entre las barras
 id_barplot(seguridad)
+id_barplot(aplicacion) # FIXME: Demasiados id
 dev.off()

@@ -59,7 +59,7 @@ dev.off()
 png(filename="id.count.boxplot.png", width=1920, 1080)
 par(mfrow=c(2,2))
 lapply(CSV, function(df) {
-    boxplot(count(df, Id)$n, names=c(attr(df, "name", exact=T)), ylab="Cantidad")
+    boxplot(count(df, Id)$n, main=c(attr(df, "name", exact=T)), ylab="Cantidad")
 })
 dev.off()
 

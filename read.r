@@ -56,6 +56,13 @@ lapply(CSV, id_barplot)
 #id_barplot(aplicacion) # FIXME: Demasiados id
 dev.off()
 
+png(filename="id.count.boxplot.png", width=1920, 1080)
+par(mfrow=c(2,2))
+lapply(CSV, function(df) {
+    boxplot(count(df, Id)$n, names=c(attr(df, "name", exact=T)), ylab="Cantidad")
+})
+dev.off()
+
 png(filename="id.count.top3.png", width=1920, 1080)
 par(mfrow=c(2,2))
 lapply(CSV, function(df) { 

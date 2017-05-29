@@ -59,11 +59,17 @@ dev.off()
 
 png(filename="level.count.png", width=1920, 1080)
 par(mfrow=c(2,2))
-lapply(CSV, function(df) {
+lapply(CSV[1:3], function(df) {
        df.count <- count(df, Level) # contar por Level
        x <- df.count[order(df.count$n, decreasing=T),]
        mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
 })
+(function(df) {
+       df.count <- count(df, Level) # contar por Level
+       x <- df.count[order(df.count$n, decreasing=T),]
+       x <- x[1:3,] # NO PREGUNTAR
+       mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
+})(CSV[[4]])
 dev.off()
 
 png(filename="id.count.boxplot.png", width=1920, 1080)

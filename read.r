@@ -72,6 +72,16 @@ lapply(CSV[1:3], function(df) {
 })(CSV[[4]])
 dev.off()
 
+# eventos por dia
+png(filename="eventos.por.dia.png", width=1920, 1080)
+x <- sapply(CSV, function(df) {
+  time <- difftime(head(df, 1)$Date, tail(df, 1)$Date, unit="days")
+  return(nrow(df) / as.numeric(time))
+})
+mi_barplot(x, c("A", "B", "C", "D"), yname = "Cantidad Eventos / dia", xname = "Eventos / dia")
+dev.off()
+
+
 png(filename="id.count.boxplot.png", width=1920, 1080)
 par(mfrow=c(2,2))
 lapply(CSV, function(df) {

@@ -18,6 +18,14 @@ leerwincsv <- function(file) {
   return(r);
 }
 
+#' Read a list of windows events csv
+#'
+#' Returns a list with all the dataframes.
+#' Each dataframe has the attribute name with its name
+#'
+#' @param files vector of csv to read using leerwincsv
+#' @return list of all the read dataframes
+#'
 readbunch <- function(files) {
     mylist <- list()
     for (i in seq_along(files)) {
@@ -37,6 +45,7 @@ barplot(sapply(CSV,(function(x) nrow(x))), names.arg=names(CSV))
 dev.off()
 
 library("dplyr")
+# wrapper para generar barplots
 mi_barplot <- function(y, x, yname = "", xname = "") {
     ylim <- c(0, 1.1*max(y))
     xx <- barplot(y, main=xname, ylab=yname, ylim = ylim, cex.axis = 1.2)

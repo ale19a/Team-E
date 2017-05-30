@@ -19,12 +19,12 @@ leerwincsv <- function(file) {
 }
 
 readbunch <- function(files) {
-    names <- files
     mylist <- list()
     for (i in seq_along(files)) {
         mylist[[i]] <- leerwincsv(files[i])
-        attr(mylist[[i]], "name") <- names[i] # Add a name to the dataframe: Nice trick for later
+        attr(mylist[[i]], "name") <- files[i] # Add a name to the dataframe: Nice trick for later
     }
+    names(mylist) <- files # nombres para el CSV
     return(mylist)
 }
 
@@ -33,7 +33,7 @@ CSV <- readbunch(c("Seguridad.csv", "Sistema.csv", "Instalacion.csv", "Aplicacio
 
 print("plot sizes.png")
 png(filename="sizes.png")
-barplot(sapply(CSV,(function(x) nrow(x))), names.arg=sapply(CSV,(function(x) attr(x, "name", exact=T))))
+barplot(sapply(CSV,(function(x) nrow(x))), names.arg=names(CSV))
 dev.off()
 
 library("dplyr")
@@ -69,7 +69,7 @@ lapply(CSV[1:3], function(df) {
        x <- df.count[order(df.count$n, decreasing=T),]
        x <- x[1:3,] # NO PREGUNTAR
        mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
-})(CSV[[4]])
+})(CSV[["Aplicacion.csv"]]) # NO PREGUNTAR
 dev.off()
 
 # eventos por dia
@@ -78,7 +78,8 @@ x <- sapply(CSV, function(df) {
   time <- difftime(head(df, 1)$Date, tail(df, 1)$Date, unit="days")
   return(nrow(df) / as.numeric(time))
 })
-mi_barplot(x, c("A", "B", "C", "D"), yname = "Cantidad Eventos / dia", xname = "Eventos / dia")
+# El segundo par tiene que estar en blanco porque names(x) ya tiene los nombres
+mi_barplot(x, c("","","",""), yname = "Cantidad Eventos / dia", xname = "Eventos / dia")
 dev.off()
 
 

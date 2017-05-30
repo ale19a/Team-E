@@ -1,0 +1,13 @@
+Package: Team-E
+Type: Package
+Title: Team-E MasterCS5
+Version: 0.1.0
+Author: Team-E
+Maintainer: Mice7R
+Description: Team-E Work
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+imports:
+  dplyr
+  lubridate

@@ -10,8 +10,6 @@ setAs("character", "DateTime", function(from) lubridate::dmy_hms(from))
 #'
 #' @param file csv file to read
 #' @return Dataframe with the csv parsed
-#' @examples
-#' csvdf <- leerwincsv("mywindowsevents.csv")
 #' @export
 #'
 leerwincsv <- function(file) {

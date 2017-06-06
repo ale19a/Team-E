@@ -31,7 +31,6 @@ Se han generado una serie de gráficos los cuales son presentados a continuació
 Gráfico descriptivo del **total de eventos** producidos en un entorno de Microsoft agrupados por tipos de eventos (aplicación, seguridad, sistemas e Instalación)
 
 ```{r pressure0, echo=FALSE}
-#par(mfrow=c(2,2))
 ilapply(CSV, function(df){
   x <- count(df, Id, sort=T)[1:5,]
   mi_barplot(x$n, x$Id, yname= "Cantidad", xname = attr(df, "name", exact=T), col = attr(df, "color", exact=T))
@@ -41,15 +40,14 @@ ilapply(CSV, function(df){
 Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **aplicación** en un entorno Microsoft.
 
 ```{r pressure1, echo=FALSE}
-par(mfrow=c(2,2))
 ilapply(CSV[1:3], function(df) {
        x <- count(df, Level, sort=T)
-       mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
+       mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T), col = attr(df, "color", exact=T))
 })
 (function(df) {
        x <- count(df, Level, sort=T)
        x <- x[1:3,] # NO PREGUNTAR
-       mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
+       mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T), col = attr(df, "color", exact=T))
 })(CSV[["./data/Aplicacion.csv"]]) # NO PREGUNTAR
 ```
 

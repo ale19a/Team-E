@@ -33,7 +33,7 @@ Gráfico descriptivo del **total de eventos** producidos en un entorno de Micros
 ```{r pressure0, echo=FALSE}
 #par(mfrow=c(2,2))
 ilapply(CSV, function(df){
-  x <- count(df, Id, sort=T)[1:3,]
+  x <- count(df, Id, sort=T)[1:5,]
   mi_barplot(x$n, x$Id, yname= "Cantidad", xname = attr(df, "name", exact=T), col = attr(df, "color", exact=T))
 })
 ```

@@ -58,7 +58,7 @@ x <- sapply(CSV, function(df) {
   time <- difftime(head(df, 1)$Date, tail(df, 1)$Date, unit="days")
   time.n <- as.numeric(time)
   if (time.n == 0) return(nrow(df))
-  else return(nrow(df) / as.numeric(time))
+  else return(round(nrow(df) / as.numeric(time),digits=2))
 })
 # El segundo par tiene que estar en blanco porque names(x) ya tiene los nombres
 mi_barplot(x, c("","","",""), yname = "Cantidad Eventos / dia", xname = "Eventos / dia", col = CSV_COLORS)

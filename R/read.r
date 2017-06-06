@@ -46,12 +46,13 @@ readbunch <- function(files) {
 #' @param x vector con los nombres de los valores para mostrar en el eje de las x
 #' @param yname Nombre para las y
 #' @param xname Nombre para las x
+#' @param col Colores para las columnas
 #' @examples
 #'  mi_barplot(c(1,10,2), c("A", "B", "C"), yname="Cantidad", xname="Cantidad de cada tipo")
 #' @export
-mi_barplot <- function(y, x, yname = "", xname = "") {
+mi_barplot <- function(y, x, yname = "", xname = "", col = NULL) {
     ylim <- c(0, 1.1*max(y))
-    xx <- barplot(y, main=xname, ylab=yname, ylim = ylim, cex.axis = 1.2)
+    xx <- barplot(y, main=xname, ylab=yname, ylim = ylim, cex.axis = 1.2, col = col)
     text(x = xx, y = y, label = y, pos = 3, cex = 1.0, col = "red")
     axis(1, at = xx, labels = x, tick = F, las = 2, line = -0.5, cex.axis=1.2)
 }

@@ -53,7 +53,7 @@ readbunch <- function(files) {
 mi_barplot <- function(y, x, yname = "", xname = "", col = NULL) {
     ylim <- c(0, 1.1*max(y))
     xx <- barplot(y, main=xname, ylab=yname, ylim = ylim, cex.axis = 1.2, col = col)
-    text(x = xx, y = y, label = y, pos = 3, cex = 1.0, col = "red")
+    text(x = xx, y = y, label = y, pos = 3, cex = 1.0, col = "black")
     axis(1, at = xx, labels = x, tick = F, las = 2, line = -0.5, cex.axis=1.2)
 }
 

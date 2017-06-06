@@ -49,37 +49,65 @@ Gráfico descriptivo del **total de eventos** producidos en un entorno de Micros
 generar_grafo1(CSV,1)
 ```
 
+Gráfico descriptivo de los **cinco identificadores de eventos más repetidos** para el grupo seguridad en un entorno Microsoft.
+
+
+
 ```{r, echo=FALSE}
 generar_grafo1(CSV,2)
 ```
+
+Gráfico descriptivo de los **cinco identificadores de eventos más repetidos** para el grupo sistemas en un entorno Microsoft.
+
+
 
 ```{r, echo=FALSE}
 generar_grafo1(CSV,3)
 ```
 
+Gráfico descriptivo de los **cinco identificadores de eventos más repetidos** para el grupo instalación en un entorno Microsoft.
+
+
+
 ```{r, echo=FALSE}
 generar_grafo1(CSV,4)
 ```
 
-Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **aplicación** en un entorno Microsoft.
+Gráfico descriptivo de los **cinco identificadores de eventos más repetidos** para el grupo aplicación en un entorno Microsoft.
+
+
 
 ```{r, echo=FALSE}
 generar_grafo2(CSV, 1)
 ```
 
+Gráfico descriptivo de los **eventos totales** para el grupo **seguridad** en un entorno Microsoft.
+
+
+
 ```{r, echo=FALSE}
 generar_grafo2(CSV, 2)
 ```
+
+Gráfico descriptivo de los **eventos totales** para el grupo **sistemas** en un entorno Microsoft.
+
+
 
 ```{r, echo=FALSE}
 generar_grafo2(CSV, 3)
 ```
 
+Gráfico descriptivo de los **eventos totales** para el grupo **instalación** en un entorno Microsoft.
+
+
+
 ```{r, echo=FALSE}
 generar_grafo2(CSV, 4)
 ```
 
-Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **seguridad** en un entorno Microsoft.
+Gráfico descriptivo de los **eventos totales** para el grupo **aplicación** en un entorno Microsoft.
+
+
 
 ```{r pressure2, echo=FALSE}
 x <- sapply(CSV, function(df) {
@@ -92,25 +120,7 @@ x <- sapply(CSV, function(df) {
 mi_barplot(x, c("","","",""), yname = "Cantidad Eventos / dia", xname = "Eventos / dia", col = CSV_COLORS)
 ```
 
-Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **sistemas** en un entorno Microsoft.
-
-```{r pressure4, echo=FALSE}
-```
-
-Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **instalación** en un entorno Microsoft.
-
-```{r pressure5, echo=FALSE}
-```
-
-Gráfico descriptivo de los **tres identificadores de eventos más repetidos** para cada uno de los grupos en un entorno Microsoft.
-
-```{r pressure6, echo=FALSE}
-```
-
-Gráfico descriptivo de las posibles agrupaciones de eventos del sistema en función de su severidad (Warning, Error…) en un entorno Microsoft.
-
-```{r pressure7, echo=FALSE}
-```
+Gráfico descriptivo del total de **eventos diarios** en un entorno Microsoft.
 
 
 

@@ -21,7 +21,7 @@ leerwincsv <- function(file) {
   return(r);
 }
 
-#' Read a list of windows events csv
+#' Read a list of windows events csv using leerwincsv
 #'
 #' Returns a list with all the dataframes.
 #' Each dataframe has the attribute name with its name
@@ -55,5 +55,3 @@ mi_barplot <- function(y, x, yname = "", xname = "") {
     text(x = xx, y = y, label = y, pos = 3, cex = 1.0, col = "red")
     axis(1, at = xx, labels = x, tick = F, las = 2, line = -0.5, cex.axis=1.2)
 }
-
-

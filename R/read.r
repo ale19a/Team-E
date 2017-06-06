@@ -27,16 +27,23 @@ leerwincsv <- function(file) {
 #' Each dataframe has the attribute name with its name
 #'
 #' @param files vector of csv to read using leerwincsv
+#' @param names vector of names for dataframes, if NULL then the path will be used
 #' @return list of all the read dataframes
 #' @export
 #'
-readbunch <- function(files) {
+readbunch <- function(files, names = NULL) {
     mylist <- list()
     for (i in seq_along(files)) {
         mylist[[i]] <- leerwincsv(files[i])
-        attr(mylist[[i]], "name") <- files[i] # Add a name to the dataframe: Nice trick for later
+        if (is.null(names))
+          attr(mylist[[i]], "name") <- files[i] # Add a name to the dataframe: Nice trick for later
+        else
+          attr(mylist[[i]], "name") <- names[i] # Add a name to the dataframe: Nice trick for later
     }
-    names(mylist) <- files # nombres para el CSV
+    if (is.null(names))
+      names(mylist) <- files # nombres para el CSV
+    else
+      names(mylist) <- names
     return(mylist)
 }
 

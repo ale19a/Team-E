@@ -55,3 +55,17 @@ mi_barplot <- function(y, x, yname = "", xname = "") {
     text(x = xx, y = y, label = y, pos = 3, cex = 1.0, col = "red")
     axis(1, at = xx, labels = x, tick = F, las = 2, line = -0.5, cex.axis=1.2)
 }
+
+
+#' Invisilbe lapply
+#'
+#' @description lapply without any output.
+#'
+#' @param X iterable of elements
+#' @param FUN function to apply to each element
+#' @param ... lapply other params
+#'
+#' @return NULL
+#' @export
+#' @seealso lapply
+ilapply <- function(X, FUN, ...) { invisible(lapply(X, FUN, ...)) }

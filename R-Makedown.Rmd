@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("TeamE")
+library("dplyr")
 CSV <- readbunch(c("./data/Seguridad.csv", "./data/Sistema.csv", "./data/Instalacion.csv", "./data/Aplicacion.csv"))
 ```
 # Exploración de datos generados por el visor de eventos de Windows
@@ -28,8 +29,7 @@ Gráfico descriptivo del **total de eventos** producidos en un entorno de Micros
 ```{r pressure0, echo=FALSE}
 par(mfrow=c(2,2))
 lapply(CSV, function(df){
-  df.count <- count(df, Id) # contar la cantidad de eventos por Id
-  x <- df.count[order(df.count$n, decreasing=T),] # df.count ordenado
+  x <- count(df, Id, sort=T)
   mi_barplot(x$n, x$Id, yname= "Cantidad", xname = attr(df, "name", exact=T))
 })
 ```
@@ -39,13 +39,11 @@ Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a
 ```{r pressure1, echo=FALSE}
 par(mfrow=c(2,2))
 lapply(CSV[1:3], function(df) {
-       df.count <- count(df, Level) # contar por Level
-       x <- df.count[order(df.count$n, decreasing=T),]
+       x <- count(df, Level, sort=T)
        mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
 })
 (function(df) {
-       df.count <- count(df, Level) # contar por Level
-       x <- df.count[order(df.count$n, decreasing=T),]
+       x <- count(df, Level, sort=T)
        x <- x[1:3,] # NO PREGUNTAR
        mi_barplot(x$n, x$Level, yname = "Cantidad", xname = attr(df, "name", exact=T))
 })(CSV[["./data/Aplicacion.csv"]]) # NO PREGUNTAR
@@ -56,7 +54,9 @@ Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a
 ```{r pressure2, echo=FALSE}
 x <- sapply(CSV, function(df) {
   time <- difftime(head(df, 1)$Date, tail(df, 1)$Date, unit="days")
-  return(nrow(df) / as.numeric(time))
+  time.n <- as.numeric(time)
+  if (time.n == 0) return(nrow(df))
+  else return(nrow(df) / as.numeric(time))
 })
 # El segundo par tiene que estar en blanco porque names(x) ya tiene los nombres
 mi_barplot(x, c("","","",""), yname = "Cantidad Eventos / dia", xname = "Eventos / dia")

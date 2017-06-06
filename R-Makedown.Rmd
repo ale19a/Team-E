@@ -45,17 +45,37 @@ Se han generado una serie de gráficos los cuales son presentados a continuació
 
 Gráfico descriptivo del **total de eventos** producidos en un entorno de Microsoft agrupados por tipos de eventos (aplicación, seguridad, sistemas e Instalación)
 
-```{r grafo1.1, echo=FALSE}
-generar_grafo1(CSV, 1)
+```{r, echo=FALSE}
+generar_grafo1(CSV,1)
 ```
 
-```{r grafo1.2, echo=FALSE}
+```{r, echo=FALSE}
 generar_grafo1(CSV,2)
+```
+
+```{r, echo=FALSE}
+generar_grafo1(CSV,3)
+```
+
+```{r, echo=FALSE}
+generar_grafo1(CSV,4)
 ```
 
 Gráfico descriptivo de los identificadores de **eventos más repetidos** (izq a der) para el grupo **aplicación** en un entorno Microsoft.
 
-```{r pressure1, echo=FALSE}
+```{r, echo=FALSE}
+generar_grafo2(CSV, 1)
+```
+
+```{r, echo=FALSE}
+generar_grafo2(CSV, 2)
+```
+
+```{r, echo=FALSE}
+generar_grafo2(CSV, 3)
+```
+
+```{r, echo=FALSE}
 generar_grafo2(CSV, 4)
 ```
 

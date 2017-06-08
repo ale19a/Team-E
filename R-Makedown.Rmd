@@ -123,6 +123,7 @@ mi_barplot(x, c("","","",""), yname = "Cantidad Eventos / dia", xname = "Eventos
 Gráfico descriptivo del total de **eventos diarios** en un entorno Microsoft.
 
 **Conclusión**
+
 Al finalizar este proyecto podemos concluir que el sistema de logs de windows es robusto pero contiene excesiva información que dificulta su compresión y análisis. Este proyecto cubre esta necesidad, sintetizando la información y  priorizando las necesidades concretas dependiendo de las circunstancias. 
 
 
